@@ -130,3 +130,14 @@ describe("index() functionality", function() {
     });
 
 });
+
+describe("normalize() functionality", function() {
+
+    it("should return a normalized size string", function() {
+        assert(apparelSorter.normalize("XS") == "XS");
+        assert(apparelSorter.normalize("Small") == "S");
+        assert(apparelSorter.normalize("medium") == "M");
+    });
+
+});
+
