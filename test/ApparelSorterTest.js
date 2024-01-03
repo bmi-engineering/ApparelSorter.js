@@ -136,7 +136,10 @@ describe("normalize() functionality", function() {
     it("should return a normalized size string", function() {
         assert(apparelSorter.normalize("XS") == "XS");
         assert(apparelSorter.normalize("Small") == "S");
+        assert(apparelSorter.normalize("M") == "M")
         assert(apparelSorter.normalize("medium") == "M");
+        assert(apparelSorter.normalize("L") == "L")
+        assert(apparelSorter.normalize("LARGE") == "L");
     });
 
 });
