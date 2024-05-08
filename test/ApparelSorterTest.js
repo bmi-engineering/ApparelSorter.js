@@ -92,6 +92,73 @@ describe("sort() functionality", function() {
         assert.deepEqual(["1XL", "2XL", "3XL"], apparelSorter.sortSizes(sizes));
     });
 
+    it("should sort all alpha sizes from SSC accurately", () => {
+        const allAlphaSizes = [
+            'XXXS',
+            '3XS',
+            'XXS',
+            '2XS',
+            'XS/S',
+            'XS',
+            'EXTRA SMALL',
+            'S',
+            'SMALL',
+            'M',
+            'MEDIUM',
+            'M/L',
+            'MEDIUM LARGE',
+            'MEDIUM_LARGE',
+            'L',
+            'LARGE',
+            'LT',
+            'XL',
+            'EXTRA LARGE',
+            'XLT',
+            'XL/2X',
+            '2XL',
+            'XXL',
+            'XL/XXL',
+            '2XLT',
+            '1X',
+            '3XL',
+            'XXXL',
+            '3XLT',
+            '2X',
+            'XXXXL',
+            '4XL',
+            '4XLT',
+            '3X',
+            '4X',
+            '5XL',
+            '6XL',
+        ];
+
+        const allAlphaSizesSortedAndNormalized = [
+            'XXXS',
+            'XXS',
+            'XS',
+            'XS/S',
+            'S',
+            'M/L',
+            'M',
+            'L',
+            'XL/2XL',
+            'XL',
+            '2XL',
+            '3XL',
+            '4XL',
+            '5XL',
+            '6XL',
+        ];
+
+        const sortedSizes = apparelSorter.sortSizes(allAlphaSizes);
+
+        const sortedUniqueSizes = apparelSorter.sortSizes(allAlphaSizes, { normalized: true }).filter((value, index, array) => array.indexOf(value) === index);
+
+        assert.deepEqual(allAlphaSizes.length, sortedSizes.length);
+        assert.deepEqual([...allAlphaSizesSortedAndNormalized], sortedUniqueSizes);
+    })
+
 });
 
 describe("numberify() functionality", function() {
@@ -103,9 +170,9 @@ describe("numberify() functionality", function() {
 	});
 
 	it("should return correct numeric value for XL, XXL and XXXL", function() {
-	    assert.equal(apparelSorter.index("XL"), 32);
-		assert.equal(apparelSorter.index("XXL"), 42);
-		assert.equal(apparelSorter.index("XXXL"), 44);
+	    assert.equal(apparelSorter.index("XL"), 49);
+		assert.equal(apparelSorter.index("XXL"), 66);
+		assert.equal(apparelSorter.index("XXXL"), 70);
 	});
 
     it("should return zero for unknown size", function() {
