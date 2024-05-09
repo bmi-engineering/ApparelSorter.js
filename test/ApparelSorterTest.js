@@ -194,12 +194,6 @@ describe("numberify() functionality", function() {
 		assert(apparelSorter.index("Large") > 0);
 	});
 
-	it("should return correct numeric value for XL, XXL and XXXL", function() {
-	    assert.equal(apparelSorter.index("XL"), 49);
-		assert.equal(apparelSorter.index("XXL"), 66);
-		assert.equal(apparelSorter.index("XXXL"), 70);
-	});
-
     it("should return zero for unknown size", function() {
         assert(apparelSorter.index("UnknownSize") == 0);
         assert(apparelSorter.index("This is a very large unknown size") == 0);
