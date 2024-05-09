@@ -92,7 +92,7 @@ describe("sort() functionality", function() {
         assert.deepEqual(["1XL", "2XL", "3XL"], apparelSorter.sortSizes(sizes));
     });
 
-    it("should sort all alpha sizes from SSC accurately", () => {
+    it("should sort all alpha sizes, regardless of negative or positive integer, accurately", () => {
         const allAlphaSizes = [
             'XXXS',
             '3XS',
