@@ -151,12 +151,37 @@ describe("sort() functionality", function() {
             '6XL',
         ];
 
+        const frenchAlphaSizes = [
+            '3TP',
+            '2TP',
+            'TP',
+            'P',
+            'M',
+            'G',
+            'TG',
+            '2TG',
+            '3TG',
+        ];
+
+        const frenchAlphaSizesNormalized = [
+            'XXXS',
+            'XXS',
+            'XS',
+            'S',
+            'M',
+            'L',
+            'XL',
+            '2XL',
+            '3XL'
+        ]
+
         const sortedSizes = apparelSorter.sortSizes(allAlphaSizes);
 
         const sortedUniqueSizes = apparelSorter.sortSizes(allAlphaSizes, { normalized: true }).filter((value, index, array) => array.indexOf(value) === index);
 
         assert.deepEqual(allAlphaSizes.length, sortedSizes.length);
         assert.deepEqual([...allAlphaSizesSortedAndNormalized], sortedUniqueSizes);
+        assert.deepEqual(apparelSorter.sortSizes(frenchAlphaSizes, { normalized: true }), frenchAlphaSizesNormalized);
     })
 
 });
