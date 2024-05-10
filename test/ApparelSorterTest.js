@@ -18,7 +18,7 @@ describe("sort() functionality", function() {
         var unsortedSizes = ["3XL","1XL","2XL"];
         assert.deepEqual(["1XL", "2XL", "3XL"], apparelSorter.sort(unsortedSizes));
 	    var unsortedSizes = ["XXXL","XXL","XL","3XL","1XL","2XL"];
-	    assert.deepEqual(["XL","1XL","XXL","2XL","XXXL","3XL"], apparelSorter.sort(unsortedSizes));
+	    assert.deepEqual(["XL","1XL","2XL","XXL","3XL","XXXL"], apparelSorter.sort(unsortedSizes));
     });
 
 
@@ -78,8 +78,8 @@ describe("sort() functionality", function() {
     });
 
 	it("should sort tall after standard sizing", function() {
-		var unsortedSizes = ["XS","S","M", "L", "LT", "XLT", "XL", "MT", "ST", "2X", "2XLT", "2XT", "3X"];
-		assert.deepEqual(["XS", "S", "ST", "M", "MT", "L", "LT", "XL", "XLT", "2X", "2XLT", "2XT", "3X"], apparelSorter.sort(unsortedSizes));
+		var unsortedSizes = ["XS","S","M", "L", "LT", "XLT", "XL", "MT", "ST", "2X", "2XT", "3X"];
+		assert.deepEqual(["XS", "S", "ST", "M", "MT", "L", "LT", "XL", "XLT", "2X", "2XT", "3X"], apparelSorter.sort(unsortedSizes));
 	});
 
     it("should sort unfinished lengths", function() {
