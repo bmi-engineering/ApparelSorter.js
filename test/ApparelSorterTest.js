@@ -8,88 +8,94 @@ describe("sort() functionality", function() {
     });
 
     it("should sort standard abbreviated sizes", function() {
-        var sizes = ["XL", "L", "S", "M", "XS","3XL","1XL","2XL"];
-        assert.deepEqual(["XS","S","M","L","XL","1XL","2XL","3XL"], apparelSorter.sort(sizes));
+        var unsortedSizes = ["XL", "L", "S", "M", "XS","3XL","1XL","2XL"];
+        assert.deepEqual(["XS","S","M","L","XL","1XL","2XL","3XL"], apparelSorter.sort(unsortedSizes));
     });
 
     it("should sort XXL as if it were 2XL", function() {
-        var sizes = ["3XL","1XL","XXL"];
-        assert.deepEqual(["1XL", "XXL", "3XL"], apparelSorter.sort(sizes));
-        var sizes = ["3XL","1XL","2XL"];
-        assert.deepEqual(["1XL", "2XL", "3XL"], apparelSorter.sort(sizes));
-	    var sizes = ["XXXL","XXL","XL","3XL","1XL","2XL"];
-	    assert.deepEqual(["XL","1XL","2XL","XXL","3XL","XXXL"], apparelSorter.sort(sizes));
+        var unsortedSizes = ["3XL","1XL","XXL"];
+        assert.deepEqual(["1XL", "XXL", "3XL"], apparelSorter.sort(unsortedSizes));
+        var unsortedSizes = ["3XL","1XL","2XL"];
+        assert.deepEqual(["1XL", "2XL", "3XL"], apparelSorter.sort(unsortedSizes));
+	    var unsortedSizes = ["XXXL","XXL","XL","3XL","1XL","2XL"];
+	    assert.deepEqual(["XL","1XL","XXL","2XL","XXXL","3XL"], apparelSorter.sort(unsortedSizes));
     });
 
-	it("should sort XXL before XXXL", function() {
-		var sizes = ["XXXL","XXL"];
-		assert.deepEqual(["XXL","XXXL"], apparelSorter.sort(sizes));
+
+    it("should sort XXL before XXXL", function() {
+		var unsortedSizes = ["XXXL","XXL"];
+		assert.deepEqual(["XXL","XXXL"], apparelSorter.sort(unsortedSizes));
 	});
 
     it("should sort extended sizes", function() {
-        var sizes = ["6X","5X","9XL","3XL", "2X","1X","18X","13X"];
-        assert.deepEqual(["1X","2X","3XL","5X","6X","9XL","13X","18X"], apparelSorter.sort(sizes));
+        var unsortedSizes = ["6X","5X","9XL","3XL", "2X","1X","18X","13X"];
+        assert.deepEqual(["1X","2X","3XL","5X","6X","9XL","13X","18X"], apparelSorter.sort(unsortedSizes));
     });
 
     it("should sort size ranges with forward slashes such as X/S, S/M, etc.", function() {
-        var sizes = ["L/XL","XS/S","S/M"];
-        assert.deepEqual(["XS/S","S/M","L/XL"], apparelSorter.sort(sizes));
+        var unsortedSizes = ["L/XL","XS/S","S/M"];
+        assert.deepEqual(["XS/S","S/M","L/XL"], apparelSorter.sort(unsortedSizes));
     });
 
     it("should sort numeric sizes", function() {
-		var sizes = ["18W", "16", "14", "12", "10", "8", "6", "4", "2", "0"];
-		assert.deepEqual(["0","2","4","6","8","10","12","14","16","18W"], apparelSorter.sort(sizes));
+		var unsortedSizes = ["18W", "16", "14", "12", "10", "8", "6", "4", "2", "0"];
+		assert.deepEqual(["0","2","4","6","8","10","12","14","16","18W"], apparelSorter.sort(unsortedSizes));
 	});
 
 	it("should sort EU shoe sizes", function() {
-		var sizes = ["EU 42", "EU 34", "EU 36", "EU 40", "EU 39"];
-		assert.deepEqual(["EU 34", "EU 36", "EU 39", "EU 40", "EU 42"], apparelSorter.sort(sizes));
+		var unsortedSizes = ["EU 42", "EU 34", "EU 36", "EU 40", "EU 39"];
+		assert.deepEqual(["EU 34", "EU 36", "EU 39", "EU 40", "EU 42"], apparelSorter.sort(unsortedSizes));
 
-		var sizes = ["EUR 42", "EUR 34", "EUR 36", "EUR 40", "EUR 39"];
-		assert.deepEqual(["EUR 34", "EUR 36", "EUR 39", "EUR 40", "EUR 42"], apparelSorter.sort(sizes));
+		var unsortedSizes = ["EUR 42", "EUR 34", "EUR 36", "EUR 40", "EUR 39"];
+		assert.deepEqual(["EUR 34", "EUR 36", "EUR 39", "EUR 40", "EUR 42"], apparelSorter.sort(unsortedSizes));
 	});
 
 	it("should sort US shoe sizes", function() {
-		var sizes = ["US 6", "US 7", "US 12", "US 10", "US 8"];
-		assert.deepEqual(["US 6", "US 7", "US 8", "US 10", "US 12"], apparelSorter.sort(sizes));
+		var unsortedSizes = ["US 6", "US 7", "US 12", "US 10", "US 8"];
+		assert.deepEqual(["US 6", "US 7", "US 8", "US 10", "US 12"], apparelSorter.sort(unsortedSizes));
 	});
 
 	it("should sort half show sizes", function() {
-		var sizes = ["US 6", "US 7.5", "US 12", "US 10.5", "US 8"];
-		assert.deepEqual(["US 6", "US 7.5", "US 8", "US 10.5", "US 12"], apparelSorter.sort(sizes));
+		var unsortedSizes = ["US 6", "US 7.5", "US 12", "US 10.5", "US 8"];
+		assert.deepEqual(["US 6", "US 7.5", "US 8", "US 10.5", "US 12"], apparelSorter.sort(unsortedSizes));
 	});
 
     it("should sort short sleeve and long sleeve", function() {
-        var sizes = ["LS", "SS"];
-        assert.deepEqual(["SS","LS"], apparelSorter.sort(sizes));
-        var sizes = ["Long Sleeve", "Short Sleeve"];
-        assert.deepEqual(["Short Sleeve","Long Sleeve"], apparelSorter.sort(sizes));
+        var unsortedSizes = ["LS", "SS"];
+        assert.deepEqual(["SS","LS"], apparelSorter.sort(unsortedSizes));
+        var unsortedSizes = ["Long Sleeve", "Short Sleeve"];
+        assert.deepEqual(["Short Sleeve","Long Sleeve"], apparelSorter.sort(unsortedSizes));
     });
 
     it("should sort ranges such as 28-30, 32-34, etc.", function() {
-        var sizes = ["20-22", "16-18", "10-12", "16W-18W"];
-        assert.deepEqual(["10-12", "16-18", "16W-18W", "20-22"], apparelSorter.sort(sizes));
+        var unsortedSizes = ["20-22", "16-18", "10-12", "16W-18W"];
+        assert.deepEqual(["10-12", "16-18", "16W-18W", "20-22"], apparelSorter.sort(unsortedSizes));
     });
 
     it("should sort talls", function() {
-        var sizes = ["2XLT", "XLT", "LT"];
-        assert.deepEqual(["LT", "XLT", "2XLT"], apparelSorter.sort(sizes));
+        var unsortedSizes = ["2XLT", "XLT", "LT"];
+        assert.deepEqual(["LT", "XLT", "2XLT"], apparelSorter.sort(unsortedSizes));
     });
 
+	it("should sort tall after standard sizing", function() {
+		var unsortedSizes = ["XS","S","M", "L", "LT", "XLT", "XL", "MT", "ST", "2X", "2XLT", "2XT", "3X"];
+		assert.deepEqual(["XS", "S", "ST", "M", "MT", "L", "LT", "XL", "XLT", "2X", "2XLT", "2XT", "3X"], apparelSorter.sort(unsortedSizes));
+	});
+
     it("should sort unfinished lengths", function() {
-        var sizes = ["36","34","35","36U"];
-        assert.deepEqual(["34","35","36","36U"], apparelSorter.sort(sizes));
-        var sizes = ["36","34","35","36 Unfinished"];
-        assert.deepEqual(["34","35","36","36 Unfinished"], apparelSorter.sort(sizes));
-        var sizes = ["36","34","35","36 Unf"];
-        assert.deepEqual(["34","35","36","36 Unf"], apparelSorter.sort(sizes));
+        var unsortedSizes = ["36","34","35","36U"];
+        assert.deepEqual(["34","35","36","36U"], apparelSorter.sort(unsortedSizes));
+        var unsortedSizes = ["36","34","35","36 Unfinished"];
+        assert.deepEqual(["34","35","36","36 Unfinished"], apparelSorter.sort(unsortedSizes));
+        var unsortedSizes = ["36","34","35","36 Unf"];
+        assert.deepEqual(["34","35","36","36 Unf"], apparelSorter.sort(unsortedSizes));
     });
 
     it("calling sortSizes() function instead of sort() should still work", function() {
-        var sizes = ["3XL","1XL","XXL"];
-        assert.deepEqual(["1XL", "XXL", "3XL"], apparelSorter.sortSizes(sizes));
-        var sizes = ["3XL","1XL","2XL"];
-        assert.deepEqual(["1XL", "2XL", "3XL"], apparelSorter.sortSizes(sizes));
+        var unsortedSizes = ["3XL","1XL","XXL"];
+        assert.deepEqual(["1XL", "XXL", "3XL"], apparelSorter.sort(unsortedSizes));
+        var unsortedSizes = ["3XL","1XL","2XL"];
+        assert.deepEqual(["1XL", "2XL", "3XL"], apparelSorter.sort(unsortedSizes));
     });
 
     it("should sort all alpha sizes, regardless of negative or positive integer, accurately", () => {
